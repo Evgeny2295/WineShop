@@ -1,0 +1,5 @@
+a:2:{s:4:"data";s:359:"    <li class="header__menu-catalog-item"><a href="/category/vodka">Водка</a></li>
+    <li class="header__menu-catalog-item"><a href="/category/absent">Абсент</a></li>
+    <li class="header__menu-catalog-item"><a href="/category/vino">Вино</a></li>
+    <li class="header__menu-catalog-item"><a href="/category/tekila">Текила</a></li>
+";s:8:"end_time";i:1725802095;}

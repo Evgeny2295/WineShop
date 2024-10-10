@@ -1,0 +1,10 @@
+a{
+    color: #ee6e73;
+}
+a:hover{
+    color: #000;
+}
+
+.ck-editor__editable{
+    min-height: 300px;
+}
