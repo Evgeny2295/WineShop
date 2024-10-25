@@ -15,10 +15,10 @@ class CategoryController extends AppController
         $categoryModel = new Category();
         $productModel = new Product();
         $language_id = App::$app->getProperty('language')['id'];
-        $alias = $this->route['alias'];
+        $slug = $this->route['slug'];
 
 //        $condition = ['slug'=>$slug,'language_id'=>$language_id];
-        $category = $categoryModel->getCategory($alias,$language_id);
+        $category = $categoryModel->getCategory($slug,$language_id);
 //        $category = $categoryModel->getCat(condition:$condition);
 
 

@@ -1,0 +1,34 @@
+.cabinet{
+    min-height: 500px;
+    background-color: #E6E3C4;
+}
+.cabinet__title{
+    text-align: center;
+    color: #282828;
+}
+.cabinet__sidebar-table{
+    min-height: 250px;
+}
+.cabinet__sidebar-table-row{
+    border: 1px solid #282828;
+}
+.cabinet__sidebar-table-column{
+    padding: 10px 20px 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cabinet__sidebar-link{
+    color: #454543;
+    font-size: 20px;
+    transition: .3s;
+    transform: scale(1.2);
+}
+.cabinet__sidebar-link:hover{
+    color: #282828;
+}
+
+.cabinet__content{
+    display: flex;
+    gap:30px;
+}

@@ -2,8 +2,6 @@
 
 namespace app\models\admin;
 
-use app\models\AppModel;
-
 class Order extends AppModel
 {
     public function getOrders($start,$perpage,$status = null): array

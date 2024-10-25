@@ -30,6 +30,7 @@ abstract class Model
         }
 
     }
+
     public function validate($data)
     {
         Validator::langDir(APP . '/languages/validator/lang');
@@ -81,7 +82,6 @@ abstract class Model
 
     public function save($table): int|string
     {
-
         $fields = '(';
         $values = '(';
         $data = [];
@@ -126,7 +126,6 @@ abstract class Model
 
 
     }
-
 
     public function getAll($table,$params = [],$condition = [],$orderName = null,$order = null): array
     {

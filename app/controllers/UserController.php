@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Order;
 use app\models\User;
+use core\App;
+use core\Pagination;
 
 class UserController extends AppController
 {
@@ -24,7 +27,6 @@ class UserController extends AppController
 
         $this->setMeta(___('tpl_login '));
     }
-
 
     public function signupAction()
     {
@@ -61,11 +63,29 @@ class UserController extends AppController
 
     }
 
-    public function cabinetAction()
+    public function ordersAction()
     {
         if(!User::checkAuth()){
             redirect(base_url().'user/login');
         }
+
+        $orderModel = new Order();
+
+        $userId = $_SESSION['user']['id'];
+
+        $page = get('page');
+
+        $perpage = App::$app->getProperty('pagination');
+
+        $total = $orderModel->getCountUserOrders($userId);
+
+        $pagination = new Pagination($page,$perpage,$total);
+
+        $start = $pagination->getStart();
+
+        $orders = $orderModel->getOrders($userId,$start,$perpage);
+
+        $this->set(compact('orders','pagination','total'));
     }
 
 }

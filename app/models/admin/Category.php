@@ -2,8 +2,6 @@
 
 namespace app\models\admin;
 
-use app\models\AppModel;
-
 class Category extends AppModel
 {
     public function category_validate(): bool

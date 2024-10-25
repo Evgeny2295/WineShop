@@ -29,8 +29,7 @@ class ProductController extends  AppController
 
         $languages = App::$app->getProperty('languages');
         $categories = App::$app->getProperty('categories');
-        if(!empty($_SESSION['errors'])){
-        }
+
         if(!empty($_POST) && !empty($_POST['product_description']) && !empty($_FILES)){
 
             $this->model->load();

@@ -2,22 +2,20 @@
 <?php $categories = \core\App::$app->getProperty('categories')?>
 <div id="main-block">
     <main class="main main-products">
-        <section class="main__breadcrumbs">
-            <div class="container">
-                <ul class="main__breadcrumbs-list">
-                    <li class="main__breadcrumbs-item"><a href="/"><?php __('tpl_main')?></a></li>
-                    <li class="main__breadcrumbs-item"><a href="#"><?php __('tpl_header_catalog')?></a></li>
-                    <li class="main__breadcrumbs-item"><?=$category['title']?></li>
-                </ul>
-            </div>
-        </section>
         <section class="main__block">
             <div class="container">
+                <div class="main__breadcrumbs">
+                    <ul class="main__breadcrumbs-list">
+                        <li class="main__breadcrumbs-item"><a href="/"><?php __('tpl_main')?></a></li>
+                        <li class="main__breadcrumbs-item"><a href="#"><?php __('tpl_header_catalog')?></a></li>
+                        <li class="main__breadcrumbs-item"><?=$category['title']?></li>
+                    </ul>
+                </div>
                 <div class="main__block-row">
                     <div class="main__navbar">
                         <ul class="main__navbar-list">
                             <?php foreach ($categories as $cat):?>
-                                <li class="main__navbar-item"><a href="#"><?=$cat['title']?></a><span class="main__navbar-item-qty">2</span></li>
+                                <li class="main__navbar-item"><a href="#" class="main__navbar-link"><?=$cat['title']?></a><span class="main__navbar-item-qty"><?=$cat['count']?></span></li>
                             <?php endforeach?>
                         </ul>
                     </div>
@@ -105,4 +103,5 @@
 <script>
     document.querySelector('.header').classList.add("header-products")
    document.querySelector('.header__btn').classList.add('hidden')
+    document.querySelector('.header__menu-catalog-dropdown').classList.add('header__menu-catalog-dropdown--dark')
 </script>

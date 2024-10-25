@@ -9,11 +9,26 @@ class Category extends AppModel
         {
 
             $stmt = $this->conn->prepare("SELECT * FROM category c JOIN category_description cd 
-                                                ON c.id=cd.category_id WHERE language_id = :language_id");
+                                                ON c.id=cd.category_id WHERE cd.language_id = :language_id");
 
             $stmt->execute(['language_id'=>$language_id]);
 
             return $stmt->fetchAll();
+
+        }
+         public function getCategoriesWithCountProducts($language_id): array
+        {
+
+        $stmt = $this->conn->prepare("SELECT c.*, c.*,cd.*,COUNT(*) as count FROM category c JOIN category_description cd 
+                                                ON c.id=cd.category_id
+                                                JOIN product p ON p.category_id = c.id
+                                                 WHERE cd.language_id = :language_id
+                                                GROUP BY p.category_id,cd.language_id,cd.title,cd.description
+                                                 ");
+
+        $stmt->execute(['language_id'=>$language_id]);
+
+        return $stmt->fetchAll();
 
         }
 

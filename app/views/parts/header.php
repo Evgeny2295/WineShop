@@ -21,6 +21,7 @@ $categories = \core\App::$app->getProperty('categories');
     <link rel="stylesheet" href="<?php PATH?>/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php PATH?>/assets/css/style.css">
     <link rel="stylesheet" href="<?php PATH?>/assets/css/product.css">
+    <link rel="stylesheet" href="<?php PATH?>/assets/css/user.css">
     <title>Document</title>
 </head>
 <body>
@@ -35,7 +36,7 @@ $categories = \core\App::$app->getProperty('categories');
                     <div class="header__search-form" >
                         <form action="/search" >
                             <input class="header__search-input" type="text" name="s" placeholder="Поиск">
-                            <button type="button" class="header__search-close" onclick="search()><i class="fas fa-times"></i></i></button>
+                            <button type="button" class="header__search-close" onclick="search()"><i class="fas fa-times"></i></i></button>
                             <button type="submit" class="header__search-btn"><i class="fas fa-search"></i></button>
                         </form>
                     </div>

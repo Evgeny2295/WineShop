@@ -9,6 +9,14 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class Order extends AppModel
 {
+    public function getOrders($userId,$start,$perpage)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM orders WHERE user_id = :userId LIMIT $start,$perpage");
+
+        $stmt->execute(['userId'=>$userId]);
+
+        return $stmt->fetchAll();
+    }
 
     public function saveOrder($data): int|false
     {
@@ -77,6 +85,13 @@ class Order extends AppModel
         }catch(\Exception $e){
             return false;
         }
+    }
+
+    public function getCountUserOrders($userId): int
+    {
+        $stmt = $this->conn->prepare("SELECT count(*) FROM orders WHERE user_id = :userId");
+        $stmt->execute(['userId'=>$userId]);
+        return $stmt->fetch()['count(*)'];
     }
 
     public function getCountAllOrders(): int
