@@ -11,7 +11,7 @@ class Product extends AppModel
 
         $stmt = $this->conn->prepare("SELECT * FROM product p JOIN product_description pd ON 
                                             p.id = pd.product_id WHERE p.category_id = :cat_id AND status=1 AND pd.language_id = :language_id
-                                            $order_query LIMIT $start,$perpage");
+                                             $order_query LIMIT $start,$perpage");
 
         $stmt->execute(['cat_id'=>$cat_id,'language_id'=>$language_id]);
 
@@ -32,14 +32,13 @@ class Product extends AppModel
     public function getProd($slug,$language_id): array
     {
 
-
         $stmt = $this->conn->prepare("SELECT * FROM product p JOIN product_description pd ON 
-                                            p.id = pd.product_id JOIN category c ON p.category_id = c.id WHERE status=1 AND 
+                                            p.id = pd.product_id JOIN category c ON p.category_id = c.id WHERE p.status=1 AND 
                                             pd.language_id = :language_id AND p.slug=:slug");
 
         $stmt->execute(['language_id'=>$language_id,'slug'=>$slug]);
 
-        return $stmt->fetch();
+       return $stmt->fetch();
     }
 
     public function getSimilarProducts($cat_id,$language_id)

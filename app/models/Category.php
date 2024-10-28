@@ -32,12 +32,12 @@ class Category extends AppModel
 
         }
 
-        public function getCategory($slug,$language_id): array
+        public function getCategory($category_title,$language_id): array
         {
             $stmt = $this->conn->prepare("SELECT * FROM category c JOIN category_description cd 
-                                                ON c.id=cd.category_id WHERE language_id = :language_id AND slug=:slug");
+                                                ON c.id=cd.category_id WHERE language_id = :language_id AND category_title=:category_title");
 
-            $stmt->execute(['language_id'=>$language_id,'slug'=>$slug]);
+            $stmt->execute(['language_id'=>$language_id,'category_title'=>$category_title]);
 
             return $stmt->fetch();
         }

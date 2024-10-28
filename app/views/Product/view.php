@@ -19,7 +19,7 @@
                     <div class="main__navbar">
                         <ul class="main__navbar-list">
                             <?php foreach ($categories as $cat):?>
-                                <li class="main__navbar-item"><a href="#"><?=$cat['title']?></a><span class="main__navbar-item-qty">2</span></li>
+                                <li class="main__navbar-item"><a href="category/<?=$cat['category_title']?>"><?=$cat['title']?></a><span class="main__navbar-item-qty">2</span></li>
                             <?php endforeach?>
                         </ul>
                     </div>

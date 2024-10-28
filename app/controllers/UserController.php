@@ -39,6 +39,7 @@ class UserController extends AppController
             if (!$this->model->validate($this->model->attributes) || !$this->model->checkUnique()) {
                 $this->model->getErrors();
                 $_SESSION['form_data'] = $this->model->attributes;
+                redirect('/user/signup');
             } else {
                 $this->model->attributes['password'] = password_hash($this->model->attributes['password'], PASSWORD_DEFAULT);
                 if ($this->model->save('user')) {
@@ -69,21 +70,27 @@ class UserController extends AppController
             redirect(base_url().'user/login');
         }
 
-        $orderModel = new Order();
-
         $userId = $_SESSION['user']['id'];
 
         $page = get('page');
 
         $perpage = App::$app->getProperty('pagination');
 
-        $total = $orderModel->getCountUserOrders($userId);
+        $total = $this->model->get([
+            'table'=>'orders',
+            'where'=>['user_id'=>$userId],
+            'count'=>1
+        ]);
 
         $pagination = new Pagination($page,$perpage,$total);
 
         $start = $pagination->getStart();
 
-        $orders = $orderModel->getOrders($userId,$start,$perpage);
+        $orders = $this->model->get([
+           'table'=>'orders',
+           'where'=>['user_id'=>$userId],
+           'limit'=>["LIMIT $start,$perpage"]
+        ]);
 
         $this->set(compact('orders','pagination','total'));
     }

@@ -203,8 +203,9 @@ $(document).on('click','#clear-cart',function(e){
 
 $(document).on('click','.main__product-addtocart-link',function (e){
     e.preventDefault()
+
     const id = $(this).data('id');
-    const qty = $('#input-quantity').val() ? $('#input-quantity').val() : 1;
+    const qty = $('#main__product-input-qty').val() ? $('#main__product-input-qty').val() : 1;
     const $this = $(this);
 
     $.ajax({
@@ -212,9 +213,8 @@ $(document).on('click','.main__product-addtocart-link',function (e){
         type: 'POST',
         data:{id:id,qty:qty},
         success: function (res){
-            console.log(res)
             showCart(res)
-            // $this.find('i').removeClass('fas fa-shopping-cart').addClass('fas fa-cart-plus')
+            // $this.find('i').removeClass('fas fa-cart-plus').addClass('fas fa-shopping-cart')
 
         },
         error: function (){

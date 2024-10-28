@@ -15,13 +15,15 @@ class MainController extends AppController
 {
 
 //    public false|string $layout = 'test2';
-    public function indexAction(){
-
-        $pageModel = new Page();
+    public function indexAction()
+    {
 
         $language_id = App::$app->getProperty('language')['id'];
 
-        $page = $pageModel->getPage($language_id);
+        $page = $this->model->get([
+            'table'=>'page',
+            'where'=>['language_id'=>$language_id]
+        ])[0];
 
         $this->set(compact('page'));
 

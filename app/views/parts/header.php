@@ -79,7 +79,7 @@ $categories = \core\App::$app->getProperty('categories');
                         </button>
                         <ul class="header__menu-catalog-dropdown" style="display: none">
                             <?php foreach ($categories as $category):?>
-                                <li class="header__menu-catalog-item"><a href="category/<?=$category['slug']?>"><?=$category['title']?></a></li>
+                                <li class="header__menu-catalog-item"><a href="category/<?=$category['category_title']?>"><?=$category['title']?></a></li>
                             <?php endforeach;?>
                         </ul>
                     </td>
