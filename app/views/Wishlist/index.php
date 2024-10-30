@@ -6,7 +6,7 @@
                 <div class="main__navbar">
                     <ul class="main__navbar-list">
                         <?php foreach ($categories as $cat):?>
-                            <li class="main__navbar-item"><a href="#"><?=$cat['title']?></a><span class="main__navbar-item-qty">2</span></li>
+                            <li class="main__navbar-item"><a href="category/<?=$cat['category_title']?>" class="main__navbar-link"><?=$cat['title']?></a><span class="main__navbar-item-qty"><?=$cat['count']?></span></li>
                         <?php endforeach?>
                     </ul>
                 </div>
@@ -16,30 +16,36 @@
                         <?php if(!empty($products)):?>
                             <?php foreach ($products as $product):?>
                                 <div class="main__product">
-                                    <a class="main__product-link"><img src="<?= PATH . $product['img']?>" class="main__product-img" alt=""></a>
-                                    <a class="main__product-link"><h2 class="main__product-title"><?=$product['title']?></h2></a>
+                                    <a href="product/<?=$product['slug']?>" class="main__product-link">
+                                        <img src="<?= PATH . $product['img']?>" class="main__product-img" alt="">
+                                        <div class="main__product-wishlist">
+                                            <a href="<?=PATH?>/wishlist/add?id=<?=$product['id']?>" data-id="<?=$product['id']?>"class="main__product-wishlist-add-link"><i class="far fa-heart"></i></a>
+                                        </div>
+                                        <h2 class="main__product-title"><?=$product['title']?></h2>
+                                    </a>
                                     <div class="main__product-description">
-                                        <p>Крепость:<?=$product['strength']?></p>
-                                        <p>Емкость:<?=$product['capacity']?></p>
-                                        <p>Страна:<?=$product['country']?></p>
+                                        <p class="main__product-description-text"><span class="main__product-text main__product-text--bold"><?php __('wishlist_view_strength')?>:</span><?=$product['strength']?></p>
+                                        <p class="main__product-description-text"><span class="main__product-text main__product-text--bold"><?php __('wishlist_view_capacity')?>:</span><?=$product['capacity']?></p>
+                                        <p class="main__product-description-text"><span class="main__product-text main__product-text--bold"><?php __('wishlist_view_country')?>:</span><?=$product['country']?></p>
                                     </div>
                                     <div class="main__product-rating">
-                                        <div class="main__product-rating-price"><?=$product['price']?></div>
-                                        <div class="main__product-rating-price"><?=$product['old_price']?></div>
+                                        <div class="main__product-rating-price"><span class="main__product-text main__product-text--bold">Новая цена:</span><?=$product['price']?> Р</div>
+                                        <div class="main__product-rating-price"><span class="main__product-text main__product-text--bold">Старая цена</span><del><?=$product['old_price']?> Р</del></div>
                                         <div class="main__product-rating-stars"></div>
                                     </div>
                                     <div class="main__product-cart">
-                                        <div class="main__product-cart-qty">
-                                            <button type="button" class="main__product-qty-minus"></button>
-                                            <span class="main__product-qty">1</span>
-                                            <button type="button" class="main__product-qty-plus"></button>
-                                        </div>
-                                        <div class="main__product-addtocart">
-                                            <a href="cart/addtocart" class="main__product-addtocart-link">В корзину</a>
-                                        </div>
-                                        <div class="main__product-wishlist">
-                                            <a href="<?=PATH?>/wishlist/delete?id=<?=$product['id']?>" data-id="<?=$product['id']?>"class="main__product-wishlist-delete-link">Удалить</a>
-                                        </div>
+                                        <form action="/cart/add" method="post">
+                                            <div class="main__product-qty">
+                                                <label for="main__product-input-qtu"><span class="main__product-text--bold">Выберите количество</span></label>
+                                                <input id="main__product-input-qty" class="main__product-input-qty" type="number" name="qty" value="1">
+                                            </div>
+                                            <div class="main__product-addtocart">
+                                                <input type="hidden" name="id" value="<?=$product['id']?>">
+                                                <button type="submit" class="main__product-addtocart-link" data-id="<?=$product['id']?>">
+                                                    <?php __(    'wishlist_view_add_to_cart')?> <i class="fas fa-cart-plus"></i>
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             <?php endforeach?>

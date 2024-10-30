@@ -77,7 +77,6 @@ class Router
                if(empty($route['action'])){
                    $route['action'] = 'index';
                }
-
                if(!isset($route['admin_prefix'])){
                    $route['admin_prefix'] = '';
                }else{

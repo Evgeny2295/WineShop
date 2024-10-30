@@ -18,7 +18,7 @@ $categories = \core\App::$app->getProperty('categories');
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php PATH?>/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php PATH?>/assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="<?php PATH?>/assets/css/style.css">
     <link rel="stylesheet" href="<?php PATH?>/assets/css/product.css">
     <link rel="stylesheet" href="<?php PATH?>/assets/css/user.css">
@@ -53,7 +53,7 @@ $categories = \core\App::$app->getProperty('categories');
                             <li><a class="dropdown-item" href="user/login"><?=___('tpl_login')?></a></li>
                             <li><a class="dropdown-item" href="user/signup"><?=___('tpl_signup')?></a></li>
                         <?php else:?>
-                            <li><a class="dropdown-item" href="user/cabinet"><?=___('tpl_cabinet')?></a></li>
+                            <li><a class="dropdown-item" href="orders"><?=___('tpl_cabinet')?></a></li>
                             <li><a class="dropdown-item" href="user/logout"><?=___('tpl_logout')?></a></li>
                         <?php endif?>
                     </ul>

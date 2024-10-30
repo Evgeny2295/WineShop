@@ -38,6 +38,14 @@ class AppModel extends Model
             $where = substr($where,0,strrpos($where,'AND'));
 
         }
+        if(!empty($data['in'])){
+            if(!empty($data['where'])){
+                $where .= "AND {$data['in']}";
+            }else{
+                $where .= "WHERE {$data['in']}";
+            }
+        }
+
         if(!empty($data['limit'])){
             $limit = $data['limit'][0];
         }
@@ -54,6 +62,7 @@ class AppModel extends Model
 
         if(empty($data['count'])){
             $stmt = $this->conn->prepare("SELECT * FROM $table $join $where $like $orderBy $limit");
+
         }else{
             $stmt = $this->conn->prepare("SELECT COUNT(*) FROM $table $join $where $like $orderBy $limit");
 

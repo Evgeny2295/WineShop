@@ -92,7 +92,6 @@ button{
     gap:20px;
 }
 .header__search{
-    position: relative;
 }
 
 .fa-search,
@@ -105,13 +104,12 @@ button{
 
 .header__search-form{
     position: absolute;
+    z-index: 10;
     white-space: nowrap;
     display: none;
 }
 
-.header__search-input{
 
-}
 
 .header__info-phone{
 
@@ -184,7 +182,9 @@ button{
 
 
 /*Main*/
-
+.main{
+    background-color: #E6E3C4;
+}
 .main-quote{
     background-color: #282828;
     height: 856px;
@@ -367,7 +367,62 @@ button{
 }
 
 
+/*LOGIN*/
 
+.section-title{
+    color: #282828;
+    padding: 25px 0;
+}
 
+/*PERSONAL ORDERS*/
+.personal{
+    min-height: 500px;
+    background-color: #E6E3C4;
+}
+.personal__title{
+    text-align: center;
+    color: #282828;
+}
+.personal__orders-title{
+    display: block;
+    width: 500px;
+    text-align: center;
+    color: #282828;
+}
+.personal__sidebar-table{
+    min-height: 250px;
+}
+.personal__sidebar-table-row{
+    border: 1px solid #282828;
+}
+.personal__sidebar-table-column{
+    padding: 10px 20px 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.personal__sidebar-link{
+    color: #454543;
+    font-size: 20px;
+    transition: .3s;
+    transform: scale(1.2);
+}
+.personal__sidebar-link:hover{
+    color: #282828;
+}
+
+.personal__content{
+    display: flex;
+    gap:30px;
+}
+
+/*Credential*/
+.table-responsive{
+    min-width: 500px;
+}
+.credential__table{
+    min-height: 200px;
+    vertical-align: middle;
+}
 
 
