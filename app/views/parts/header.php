@@ -90,7 +90,7 @@ $categories = \core\App::$app->getProperty('categories');
                         <a href="#" class="header__menu-link"><?php __('tpl_header_collection')?></a>
                     </td>
                     <td class="header__menu-column">
-                        <a href="#" class="header__menu-link"><?php __('tpl_header_contacts')?></a>
+                        <a href="/contacts" class="header__menu-link"><?php __('tpl_header_contacts')?></a>
                     </td>
                 </tr>
             </table>

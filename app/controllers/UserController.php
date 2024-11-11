@@ -16,8 +16,7 @@ class UserController extends AppController
         }
         if(!empty($_POST)){
             if($this->model->login()){
-                $_SESSION['success'] = ___('user_login_success_login');
-                redirect(base_url());
+                redirect('/credentials');
             }else{
                 $_SESSION['errors'] = ___('user_login_error_login');
                 redirect();

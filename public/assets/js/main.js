@@ -222,3 +222,25 @@ $(document).on('click','.main__product-addtocart-link',function (e){
         }
     })
 })
+$(document).on('click','.cart__form-signin',function(){
+    var obj = document.querySelector('.cart__form-signin-display');
+
+    if (obj.style.display != "block") {
+        obj.style.display = "block"; //Показываем элемент
+        document.querySelector('.cart__form-signup-display').style.display = "none"
+    } else {
+        obj.style.display = "none";
+    } //Скрываем элемент
+})
+
+$(document).on('click','.cart__form-signup',function(){
+    var obj = document.querySelector('.cart__form-signup-display');
+
+    if (obj.style.display != "block") {
+        obj.style.display = "block"; //Показываем элемент
+        document.querySelector('.cart__form-signin-display').style.display = "none"
+
+    } else {
+        obj.style.display = "none";
+    } //Скрываем элемент
+})

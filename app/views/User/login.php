@@ -9,10 +9,10 @@
 
 <div class="container py-3">
     <div class="row">
-        <?php if(!empty($_SESSION['success'])): ?>
-            <h3 style="color:#282828"><?=$_SESSION['success'];unset($_SESSION['success'])?></h3>
-        <?php endif;?>
         <div class="col-lg-12 category-content">
+            <?php if(!empty($_SESSION['errors'])): ?>
+                <h2 class="errors""><?=$_SESSION['errors'];unset($_SESSION['errors'])?></h2>
+            <?php endif?>
             <h1 class="title section-title"><?php __('tpl_login'); ?></h1>
 
             <form class="row g-3" method="post">

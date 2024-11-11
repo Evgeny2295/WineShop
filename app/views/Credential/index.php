@@ -13,16 +13,19 @@
                             <table class="table text-start table-bordered border-dark credential__table">
                                 <tbody>
                                 <tr>
-                                    <th scope="col"><?php __('credential_index_email'); ?></th>
-                                    <th scope="col"><?=$_SESSION['user']['email']?></th>
+                                    <th ><?php __('credential_index_email'); ?></th>
+                                    <td><?=$_SESSION['user']['email']?></td>
                                 </tr>
                                 <tr>
-                                    <th scope="col"><?php __('credential_index_name'); ?></th>
-                                    <th scope="col"><?=$_SESSION['user']['name']?></th>
+                                    <th><?php __('credential_index_name'); ?></th>
+                                    <td><?=$_SESSION['user']['name']?></td>
                                 </tr>
                                 <tr>
-                                    <th scope="col"><?php __('credential_index_address'); ?></th>
-                                    <th scope="col"><?=$_SESSION['user']['address']?></th>
+                                    <th><?php __('credential_index_address'); ?></th>
+                                    <td><?=$_SESSION['user']['address']?></td>
+                                </tr>
+                                <tr class="credential__table-col">
+                                    <th  colspan="2"><a class="credential__table-link" href="/credential/update">Внести изменения</a></th>
                                 </tr>
                                 </tbody>
                             </table>
