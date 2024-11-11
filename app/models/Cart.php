@@ -8,19 +8,18 @@ class Cart extends AppModel
     public function add_to_cart($product,$qty = 1){
         $qty = abs($qty);
 
-        if(isset($_SESSION['cart'][$product['id']])){
+        if(!empty($_SESSION['cart'][$product['id']])){
             $_SESSION['cart'][$product['id']]['qty'] +=$qty;
         }else{
+
             $_SESSION['cart'][$product['id']] = [
                 'title'=>$product['title'],
                 'slug'=>$product['slug'],
                 'price'=>$product['price'],
                 'qty'=>$qty,
                 'img'=>$product['img'],
-
             ];
         }
-
 
         $_SESSION['cart.qty'] = !empty($_SESSION['cart.qty']) ? $_SESSION['cart.qty'] + $qty : $qty;
         $_SESSION['cart.sum'] = !empty($_SESSION['cart.sum']) ? $_SESSION['cart.sum'] + $qty*$product['price'] : $qty*$product['price'] ;

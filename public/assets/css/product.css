@@ -1,5 +1,3 @@
-
-
 li{
     list-style: none;
 }
@@ -50,18 +48,27 @@ li{
     width: 360px;
     display: table;
     border: 1px solid #FFFFFF;
-
+    min-height: 500px;
 }
+
 .main__navbar-item{
     border-bottom: 1px solid #FFFFFF;
     padding: 15px;
     text-transform: uppercase;
+
 }
-.main__navbar-item a{
-    color: #282828;
+.main__navbar-link{
+    color: #454543;
+    transition: .3s;
+    font-weight: 500;
+
+}
+.main__navbar-link:hover{
+    color:#030303;
 }
 .main__navbar-item-qty{
     float: right;
+    color:#454543;
 }
 .main__filters{
     display: flex;
@@ -96,20 +103,36 @@ li{
     flex-direction: column;
 }
 .main__product{
+   margin-top: 20px;
+    max-width: 240px;
     border: 1px solid #FFFFFF;
+    border-radius: 20px;
     padding: 10px;
 }
 
+.main__product:hover{
+    transform: translateY(-10px);
+    box-shadow: -6px -6px 4px rgba(196, 195, 201, 0.7);
+}
+
+.main__product-link{
+    margin: 4px;
+    color: #282828;
+}
+.main__product-link:hover{
+    color:#5a538a;
+}
+.main__product-title{
+    margin: 0;
+}
 .main__product-img{
     width:200px;
     height: 205px;
     padding: 0 20px;
 }
-.main__product-title{
-    color: #282828;
-}
-.main__product-addtocart-link{
-    color:#282828;
+.main__product-wishlist{
+    text-align: right;
+    margin-bottom: 30px;
 }
 .main__product-wishlist-add-link{
     color:#282828;
@@ -117,12 +140,57 @@ li{
 .main__product-wishlist-delete-link{
     color:#ff0000;
 }
+.main__product-wishlist .fa-heart{
+    font-size: 20px;
+}
+.main__product-description{
+    margin:10px 0 20px;
+}
+.main__product-description-text{
+    margin-bottom:5px;
+}
+.main__product-text{
+     padding-right: 10px;
+ }
+.main__product-text--bold{
+    font-weight: 700;
+}
+.main__product-rating-price{
+    margin-bottom: 5px;
+
+}
+.main__product-qty{
+    display: flex;
+
+    flex-direction: column;
+}
+.main__product-rating-price--bold{
+    font-weight: 700;
+}
+.main__product-cart{
+    margin-top: 15px;
+}
+.main__product-addtocart{
+    margin: 20px 0;
+    text-align: center;
+}
+
+.main__product-addtocart-link{
+    color:#282828;
+    font-weight: 700;
+
+}
+.fa-cart-plus{
+    font-size: 24px;
+}
+
 
 
 
 .modal-content{
     color:#282828;
 }
+
 
 
 

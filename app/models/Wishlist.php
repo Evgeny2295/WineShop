@@ -28,7 +28,7 @@ class Wishlist extends AppModel
         }
     }
 
-    public static function get_wishlist_ids(): array
+    public function get_wishlist_ids(): array
     {
         $wishlist = $_COOKIE['wishlist'] ?? '';
         if($wishlist){

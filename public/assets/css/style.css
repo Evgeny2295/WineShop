@@ -12,7 +12,7 @@ html,body{
     margin: 0;
     padding: 0;
     font-family: "Montserrat",no-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     color: #FFFFFF;
 }
@@ -34,18 +34,24 @@ html,body{
 a{
     text-decoration: none;
     color: #FFFFFF;
+    transition: .3s;
+    font-size: 16px;
 }
 a:hover{
+
     transform: scale(1.2);
     color: #FFFFFF;
 }
+
 li{
     list-style: none;
 }
 button{
     background-color: transparent;
     border: none;
+    font-size: 16px;
 }
+
 
 .container{
     max-width: 1100px;
@@ -86,9 +92,11 @@ button{
     gap:20px;
 }
 .header__search{
-    position: relative;
 }
-.fa-search{
+
+.fa-search,
+.header__search-close
+{
     color: #FFFFFF;
     width: 20px;
     cursor: pointer;
@@ -96,13 +104,12 @@ button{
 
 .header__search-form{
     position: absolute;
+    z-index: 10;
     white-space: nowrap;
     display: none;
 }
 
-.header__search-input{
 
-}
 
 .header__info-phone{
 
@@ -112,6 +119,7 @@ button{
     border-collapse: collapse;
 }
 .header__menu-column{
+    position: relative;
     border: 1px solid;
     text-align: center;
     padding: 13px 12px;
@@ -128,7 +136,6 @@ button{
     color: #FFFFFF;
     border: none;
     cursor: pointer;
-    font-size: 14px;
     font-family: "Montserrat", no-serif;
     font-weight: 400;
 }
@@ -141,6 +148,13 @@ button{
     width: 100%;
     left:1px;
     top: 43px;
+}
+
+.header__menu-catalog-dropdown--dark{
+    position: absolute;
+    background-color: #282828;
+    top: 50px;
+
 }
 .header__menu-catalog-item{
     padding: 10px 0;
@@ -168,7 +182,12 @@ button{
 
 
 /*Main*/
-
+.main{
+    background-color: #E6E3C4;
+}
+.main__block{
+    min-height: 100vh;
+}
 .main-quote{
     background-color: #282828;
     height: 856px;
@@ -351,6 +370,165 @@ button{
 }
 
 
+/*LOGIN*/
+
+.section-title{
+    color: #282828;
+    padding: 25px 0;
+}
+
+/*PERSONAL ORDERS*/
+.personal{
+    min-height: 500px;
+    background-color: #E6E3C4;
+}
+.personal__title{
+    text-align: center;
+    color: #282828;
+}
+.personal__orders-title{
+    display: block;
+    width: 500px;
+    text-align: center;
+    color: #282828;
+}
+.personal__sidebar-table{
+    min-height: 250px;
+}
+.personal__sidebar-table-row{
+    border: 1px solid #282828;
+}
+.personal__sidebar-table-column{
+    padding: 10px 20px 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.personal__sidebar-link{
+    color: #454543;
+    font-size: 20px;
+    transition: .3s;
+    transform: scale(1.2);
+}
+.personal__sidebar-link:hover{
+    color: #282828;
+}
+
+.personal__content{
+    display: flex;
+    gap:30px;
+}
+
+/*Credential*/
+.table-responsive{
+    min-width: 700px;
+}
+.credential__table{
+    min-height: 200px;
+    vertical-align: middle;
+}
+.credential__table-col{
+    background-color: #00E466;
+    text-align: center;
+}
+.credential__table-link{
+    color: #282828;
+    align-items: center;
+}
+.credential__table-link:hover{
+    color: #0a53be;
+}
+
+.credential__table-input{
+    outline: none;
+    border: none;
+    padding: 6px 2px;
+}
+.credential__table-btn{
+    font-weight: 700;
+}
+.credential__table-btn:hover{
+    color: #0a53be;
+}
+
+/*Product*/
+.main__product{
+    padding: 0;
+    margin: 0;
+}
+.main__similar-one-product{
+    margin-top: 20px;
+    max-width: 240px;
+    border: 1px solid #FFFFFF;
+    border-radius: 20px;
+    padding: 10px;
+}
+.product__similar-title{
+    margin-top: 50px;
+
+}
+
+.product__empty{
+    font-size: 24px;
+    font-weight: 500;
+}
 
 
 
+
+
+/*CART*/
+.cart__form{
+    color: #282828;
+}
+.cart__form-action{
+   display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    font-weight: 500;
+    font-size: 24px;
+}
+.cart__form-signin,
+.cart__form-signup
+{
+    cursor: pointer;
+}
+.cart__form-signin:hover,
+.cart__form-signup:hover
+{
+    color: #0a53be;
+}
+.cart__form-signin-display{
+    color: #282828;
+    display: none;
+}
+.cart__form-signup-display{
+    color: #282828;
+    display: none;
+}
+.cart__btn{
+    display: flex;
+    justify-content: center;
+}
+
+/*ERRORS*/
+.errors{
+    display: flex;
+    justify-content: center;
+    color:#ff0000;
+    font-size: 24px;
+}
+
+/*Contacts*/
+.main__content-title{
+    display: block;
+    width: 150px;
+    margin: 0 auto;
+    color: #282828;
+}
+.main__info{
+    color: #282828;
+}

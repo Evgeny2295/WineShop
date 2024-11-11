@@ -58,4 +58,8 @@
         </div>
     </div>
 </div>
+<script>
+    document.querySelector('.header').classList.add("header-products")
+    document.querySelector('.header__btn').classList.add('hidden')
+</script>
 

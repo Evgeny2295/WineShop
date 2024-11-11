@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Order;
 use app\models\User;
+use core\App;
+use core\Pagination;
 
 class UserController extends AppController
 {
@@ -11,11 +14,9 @@ class UserController extends AppController
         if (User::checkAuth()) {
             redirect(base_url());
         }
-
         if(!empty($_POST)){
             if($this->model->login()){
-                $_SESSION['success'] = ___('user_login_success_login');
-                redirect(base_url());
+                redirect('/credentials');
             }else{
                 $_SESSION['errors'] = ___('user_login_error_login');
                 redirect();
@@ -24,7 +25,6 @@ class UserController extends AppController
 
         $this->setMeta(___('tpl_login '));
     }
-
 
     public function signupAction()
     {
@@ -37,6 +37,7 @@ class UserController extends AppController
             if (!$this->model->validate($this->model->attributes) || !$this->model->checkUnique()) {
                 $this->model->getErrors();
                 $_SESSION['form_data'] = $this->model->attributes;
+                redirect('/user/signup');
             } else {
                 $this->model->attributes['password'] = password_hash($this->model->attributes['password'], PASSWORD_DEFAULT);
                 if ($this->model->save('user')) {
@@ -61,11 +62,5 @@ class UserController extends AppController
 
     }
 
-    public function cabinetAction()
-    {
-        if(!User::checkAuth()){
-            redirect(base_url().'user/login');
-        }
-    }
 
 }

@@ -8,11 +8,25 @@ use core\App;
 class WishlistController extends AppController
 {
     public function indexAction(){
+        $products = [];
+        $language_id = App::$app->getProperty('language')['id'];
 
-        $language = App::$app->getProperty('language');
+        $wishListIds = $this->model->get_wishlist_ids();
+        if(!empty($wishListIds)){
+            $wishListIds = implode(',',$wishListIds);
 
-        $wishlistModel = new Wishlist();
-        $products = $wishlistModel->getWishlistProducts($language);
+            $products = $this->model->get([
+                'table'=>'product p',
+                'join'=>[
+                    'table'=> 'product_description pd',
+                    'on'=>'p.id=pd.product_id'
+                ],
+                'where'=>['pd.language_id'=>$language_id,'p.status'=>1],
+                'in'=>"p.id IN ({$wishListIds})",
+                'limit'=>['LIMIT 6']
+            ]);
+        }
+
 
         $this->setMeta(___('wishlist_index_title'));
         $this->set(['products'=>$products]);
@@ -26,11 +40,15 @@ class WishlistController extends AppController
             exit(json_encode($answer));
         }
 
-        $wishlistModel = new Wishlist();
-        $product = $wishlistModel->getProduct($id);
+        $product = $this->model->get([
+            'table'=>'product',
+            'where'=>['status'=>1,'id'=>$id]
+        ]);
+
 
         if($product){
-            $wishlistModel->add_to_wishlist($id);
+            $this->model->add_to_wishlist($id);
+
             $answer = ['result'=>'success', 'text'=>___('tpl_wishlist_add_success')];
         }else{
             $answer = ['result'=>'error', 'text'=>___('tpl_wishlist_add_error')];
@@ -42,8 +60,7 @@ class WishlistController extends AppController
     public function deleteAction()
     {
         $id = get('id');
-        $wishlistModel = new Wishlist();
-        if ($wishlistModel->delete_from_wishlist($id)) {
+        if ($this->model->delete_from_wishlist($id)) {
             $answer = ['result' => 'success', 'text' => ___('tpl_wishlist_delete_success')];
         } else {
             $answer = ['result' => 'error', 'text' => ___('tpl_wishlist_delete_error')];

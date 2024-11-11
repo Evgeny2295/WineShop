@@ -28,7 +28,8 @@ class AppController extends Controller
         \core\Language::load($language['code'],$this->route);
 
         $categoryModel = new Category();
-        $categories = $categoryModel->getCategories($language['id']);
+        $categories = $categoryModel->getCategoriesWithCountProducts($language['id']);
+
         App::$app->setProperty("categories",$categories);
     }
 }

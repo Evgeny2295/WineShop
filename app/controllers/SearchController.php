@@ -13,18 +13,45 @@ class SearchController extends AppController
 
         if(empty($s)) redirect();
 
-        $language = App::$app->getProperty('language');
-
+        $language_id = App::$app->getProperty('language')['id'];
         $searchModel = new Search();
 
         $page = get('page');
+
         $perpage = App::$app->getProperty('pagination');
-        $total = $searchModel->getTotalFindProducts($s);
+
+        $total = $this->model->get([
+            'table'=>'product p',
+            'join'=>[
+                'table'=>'product_description pd',
+                'on'=>'p.id=pd.product_id'
+            ],
+            'count'=>1,
+            'like'=>[
+                'query'=>"p.slug LIKE :slug",
+                'keyExec'=>':slug',
+                'exec'=>"%{$s}%"
+            ]
+        ]);
 
         $pagination = new Pagination($page,$perpage,$total);
+
         $start = $pagination->getStart();
 
-        $findProducts = $searchModel->getFindProducts($s,$language,$start,$perpage);
+        $findProducts = $this->model->get( [
+            'table'=>'product p',
+            'join'=>[
+                'table'=>'product_description pd',
+                'on'=>'p.id = pd.product_id'
+            ],
+            'where'=>['language_id'=>$language_id],
+            'like'=>[
+                'query'=>'p.slug LIKE :slug',
+                'keyExec'=>':slug',
+                'exec'=>"%{$s}%"
+            ],
+            'limit'=>[" LIMIT $start,$perpage"]
+        ]);
 
         $this->set(compact('findProducts','pagination','total','perpage'));
     }

@@ -19,7 +19,6 @@ abstract class Model
     public function load($post = true)
     {
         $data = $post ? $_POST : $_GET;
-
         if(!empty($_FILES['img']) && !empty($_FILES['img']['name'])) $data['img'] = $_FILES['img'];
 
 
@@ -30,6 +29,7 @@ abstract class Model
         }
 
     }
+
     public function validate($data)
     {
         Validator::langDir(APP . '/languages/validator/lang');
@@ -81,7 +81,6 @@ abstract class Model
 
     public function save($table): int|string
     {
-
         $fields = '(';
         $values = '(';
         $data = [];
@@ -111,7 +110,6 @@ abstract class Model
         $fields = '';
         $exec = [];
 
-
         foreach ($this->attributes as $name=>$value){
             if(!empty($value)){
                 $fields .= $name . '=' . ':' . $name . ',' ;
@@ -119,14 +117,12 @@ abstract class Model
             }
 
         }
+        $fields = rtrim($fields,',');
+        $stmt = $this->conn->prepare("UPDATE $table SET {$fields}");
 
-        $stmt = $this->conn->prepare("UPDATE users SET {$fields}");
-
-        $id = $stmt->execute([$exec]);
-
-
+        $id = $stmt->execute($exec);
+        debug($id,1);
     }
-
 
     public function getAll($table,$params = [],$condition = [],$orderName = null,$order = null): array
     {

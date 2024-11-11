@@ -18,9 +18,10 @@ $categories = \core\App::$app->getProperty('categories');
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php PATH?>/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php PATH?>/assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="<?php PATH?>/assets/css/style.css">
     <link rel="stylesheet" href="<?php PATH?>/assets/css/product.css">
+    <link rel="stylesheet" href="<?php PATH?>/assets/css/user.css">
     <title>Document</title>
 </head>
 <body>
@@ -35,7 +36,7 @@ $categories = \core\App::$app->getProperty('categories');
                     <div class="header__search-form" >
                         <form action="/search" >
                             <input class="header__search-input" type="text" name="s" placeholder="Поиск">
-                            <button type="button" class="header__search-close" onclick="search()><i class="fas fa-times"></i></i></button>
+                            <button type="button" class="header__search-close" onclick="search()"><i class="fas fa-times"></i></i></button>
                             <button type="submit" class="header__search-btn"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
@@ -52,7 +53,7 @@ $categories = \core\App::$app->getProperty('categories');
                             <li><a class="dropdown-item" href="user/login"><?=___('tpl_login')?></a></li>
                             <li><a class="dropdown-item" href="user/signup"><?=___('tpl_signup')?></a></li>
                         <?php else:?>
-                            <li><a class="dropdown-item" href="user/cabinet"><?=___('tpl_cabinet')?></a></li>
+                            <li><a class="dropdown-item" href="orders"><?=___('tpl_cabinet')?></a></li>
                             <li><a class="dropdown-item" href="user/logout"><?=___('tpl_logout')?></a></li>
                         <?php endif?>
                     </ul>
@@ -78,7 +79,7 @@ $categories = \core\App::$app->getProperty('categories');
                         </button>
                         <ul class="header__menu-catalog-dropdown" style="display: none">
                             <?php foreach ($categories as $category):?>
-                                <li class="header__menu-catalog-item"><a href="category/<?=$category['slug']?>"><?=$category['title']?></a></li>
+                                <li class="header__menu-catalog-item"><a href="category/<?=$category['category_title']?>"><?=$category['title']?></a></li>
                             <?php endforeach;?>
                         </ul>
                     </td>
@@ -89,7 +90,7 @@ $categories = \core\App::$app->getProperty('categories');
                         <a href="#" class="header__menu-link"><?php __('tpl_header_collection')?></a>
                     </td>
                     <td class="header__menu-column">
-                        <a href="#" class="header__menu-link"><?php __('tpl_header_contacts')?></a>
+                        <a href="/contacts" class="header__menu-link"><?php __('tpl_header_contacts')?></a>
                     </td>
                 </tr>
             </table>

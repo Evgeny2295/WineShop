@@ -32,13 +32,15 @@ class CartController extends AppController
         if(!$id){
             return false;
         }
-
-        $productModel = new Product();
-        $cartModel = new Cart();
-
-        $product = $productModel->getProduct($id,$language_id);
-
-        $cartModel->add_to_cart($product,$qty);
+        $product = $this->model->get([
+            'table'=>'product p',
+            'join'=>[
+                'table'=>'product_description pd',
+                'on'=>'p.id=pd.product_id'
+            ],
+            'where'=>['p.id'=>$id,'pd.language_id'=>$language_id]
+        ])[0];
+        $this->model->add_to_cart($product,$qty);
 
         if($this->isAjax()){
             $this->loadView('cart_modal');
@@ -69,10 +71,15 @@ class CartController extends AppController
                     $user->getErrors();
                     $_SESSION['form_data'] = $user->attributes;
                     redirect();
-                } else {
+                }elseif(empty($_POST['user']['name'])){
                     $user->attributes['password'] = password_hash($user->attributes['password'], PASSWORD_DEFAULT);
                     if (!$user_id = $user->save('user')) {
                         $_SESSION['errors'] = ___('cart_checkout_error_register');
+                        redirect();
+                    }
+                }else {
+                    if(!$this->model->login()){
+                        $_SESSION['errors'] = ___('user_login_error_login');
                         redirect();
                     }
                 }

@@ -51,46 +51,67 @@
                     </table>
                 </div>
 
-                <form class="row g-3" method="post" action="cart/checkout">
+                <form class="row g-3 cart__form" method="post" action="cart/checkout">
 
                     <?php if (!isset($_SESSION['user'])): ?>
-                        <div class="col-md-6 offset-md-3">
-                            <div class="form-floating mb-3">
-                                <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" value="<?= get_field_value('email') ?>">
-                                <label class="required" for="email"><?php __('cart_view_email_input'); ?></label>
+                        <h2>Чтобы оформить заказ авторизуйтесь или зарегистрируйтесь </h2>
+                        <div class="cart__form-action">
+                            <div class="cart__form-signin">Авторизоваться</div>
+                            <div class="cart__form-signup">Зарегистрироваться</div>
+                        </div>
+
+                        </div>
+                        <div class="cart__form-signin-display">
+                            <div class="col-md-6 offset-md-3">
+                                <div class="form-floating mb-3">
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" value="<?= get_field_value('email') ?>">
+                                    <label class="required" for="email"><?php __('cart_view_email_input'); ?></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 offset-md-3">
+                                <div class="form-floating mb-3">
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="password" value="<?= get_field_value('password') ?>">
+                                    <label class="required" for="password"><?php __('cart_view_password_input'); ?></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart__form-signup-display">
+                            <div class="col-md-6 offset-md-3">
+                                <div class="form-floating mb-3">
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" value="<?= get_field_value('email') ?>">
+                                    <label class="required" for="email"><?php __('cart_view_email_input'); ?></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 offset-md-3">
+                                <div class="form-floating mb-3">
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="password" value="<?= get_field_value('password') ?>">
+                                    <label class="required" for="password"><?php __('cart_view_password_input'); ?></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 offset-md-3">
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Name" value="<?= get_field_value('name') ?>">
+                                    <label class="required" for="name"><?php __('cart_view_name_input'); ?></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 offset-md-3">
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="address" class="form-control" id="address" placeholder="Address" value="<?= get_field_value('address') ?>">
+                                    <label class="required" for="address"><?php __('cart_view_address_input'); ?></label>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-md-6 offset-md-3">
-                            <div class="form-floating mb-3">
-                                <input type="password" name="password" class="form-control" id="password" placeholder="password" value="<?= get_field_value('password') ?>">
-                                <label class="required" for="password"><?php __('cart_view_password_input'); ?></label>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 offset-md-3">
-                            <div class="form-floating mb-3">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Name" value="<?= get_field_value('name') ?>">
-                                <label class="required" for="name"><?php __('cart_view_name_input'); ?></label>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 offset-md-3">
-                            <div class="form-floating mb-3">
-                                <input type="text" name="address" class="form-control" id="address" placeholder="Address" value="<?= get_field_value('address') ?>">
-                                <label class="required" for="address"><?php __('cart_view_address_input'); ?></label>
-                            </div>
-                        </div>
                     <?php endif; ?>
 
                     <div class="col-md-6 offset-md-3">
                         <div class="form-floating mb-3">
                             <textarea name="note" class="form-control" placeholder="Leave a comment here" id="note" style="height: 100px"><?= get_field_value('note') ?></textarea>
-                            <label for="note"><?php __('cart_view_note_input'); ?></label>
+                            <label style="color: #282828" for="note"><?php __('cart_view_note_input'); ?></label>
                         </div>
                     </div>
 
-                    <div class="col-md-6 offset-md-3">
+                    <div class="col-md-6 offset-md-3 cart__btn">
                         <button type="submit" class="btn btn-danger"><?php __('cart_view_order_btn'); ?></button>
                     </div>
                 </form>
@@ -109,4 +130,8 @@
 
     </div>
 </div>
+<script>
+    document.querySelector('.header').classList.add("header-products")
+    document.querySelector('.header__btn').classList.add('hidden')
+</script>
 
